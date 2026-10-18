@@ -97,8 +97,4 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before
 
 All contributors are expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## License
-
-A license has not yet been specified. Until a license is added to the repository, do not assume that the project is licensed under MIT or another open-source license.
-
 
