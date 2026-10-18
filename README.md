@@ -2,8 +2,6 @@
 
 CollabSpace is an open-source platform intended to help college students find teammates for academic, personal, and hackathon projects. Students will be able to share project ideas, describe the skills and roles they need, discover projects, and request to join teams.
 
-> **Project status:** CollabSpace is currently in its initial setup/boilerplate stage. The features described below are planned and should not be considered implemented unless they are present in the codebase.
-
 ## Goals and planned features
 
 - Share project ideas and descriptions.
@@ -31,7 +29,7 @@ The frontend and backend will be maintained separately:
 
 ```text
 collabspace/
-├── client/                 # React + Vite frontend
+├── frontend/                 # React + Vite frontend
 │   ├── public/
 │   └── src/
 │       ├── components/
@@ -39,7 +37,7 @@ collabspace/
 │       ├── services/
 │       ├── App.jsx
 │       └── main.jsx
-├── server/                 # Node.js + Express backend
+├── backend/                 # Node.js + Express backend
 │   ├── config/
 │   ├── controllers/
 │   ├── middleware/
@@ -61,21 +59,21 @@ The exact commands may change as the scaffold is implemented. First, make sure N
 1. Clone the repository:
 
    ```bash
-   git clone <REPOSITORY_URL>
-   cd <REPOSITORY_DIRECTORY>
+   git clone https://github.com/GFG-OS-MANAGEMENT/CollabSpace
+   cd CollabSpace
    ```
 
 2. Install dependencies in the directories that contain a `package.json`:
 
    ```bash
-   cd client
+   cd frontend
    npm install
    ```
 
    In a second terminal, install backend dependencies:
 
    ```bash
-   cd server
+   cd backend
    npm install
    ```
 

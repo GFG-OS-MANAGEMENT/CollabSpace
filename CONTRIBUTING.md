@@ -25,8 +25,8 @@ Depending on the current roadmap, contributions may include:
 
 The intended architecture uses separate `client/` and `server/` directories:
 
-- **Client:** React, JavaScript, Vite, and Tailwind CSS.
-- **Server:** Node.js and Express.
+- **Frontend:** React, JavaScript, Vite, and Tailwind CSS.
+- **Backend:** Node.js and Express.
 - **Database:** PostgreSQL accessed through Prisma ORM.
 
 Use the setup steps in `README.md` and the scripts present in each directory's `package.json`. Since the project may still be a scaffold, some setup steps may not be available yet. Do not assume scripts or environment variables exist if they have not been added.
