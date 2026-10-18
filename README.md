@@ -50,11 +50,12 @@ collabspace/
 └── README.md
 ```
 
-This is a proposed structure. Update it to match the actual repository as the scaffold develops.
+This is the proposed structure.
 
 ## Getting started
 
-The exact commands may change as the scaffold is implemented. First, make sure Node.js and npm are installed, and that PostgreSQL is available locally or through a database provider.
+
+Prerequisites:- Node.js, npm and PostgreSQL available locally or through a database provider.
 
 1. Clone the repository:
 
@@ -83,7 +84,6 @@ The exact commands may change as the scaffold is implemented. First, make sure N
 
 5. Start the frontend and backend using the development scripts defined in their respective `package.json` files.
 
-> If the scaffold does not yet contain these directories, scripts, or configuration files, those setup steps are not ready yet. Check the repository files and follow any updated instructions before running commands.
 
 ## Environment variables
 
