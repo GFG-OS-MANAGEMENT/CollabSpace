@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: collabspace
+      POSTGRES_PASSWORD: collabspace
+      POSTGRES_DB: collabspace
+    ports:
+      - "55432:5432"
+    volumes:
+      - collabspace-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U collabspace -d collabspace"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: ./backend
+    environment:
+      NODE_ENV: development
+      PORT: 4000
+      DATABASE_URL: postgresql://collabspace:collabspace@db:5432/collabspace?schema=public
+      JWT_SECRET: ${JWT_SECRET:-dev-only-secret-change-before-deploying-please}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:5173}
+    ports:
+      - "4000:4000"
+    depends_on:
+      db:
+        condition: service_healthy
+    command: sh -c "npx prisma migrate deploy && node src/server.js"
+
+volumes:
+  collabspace-db:
