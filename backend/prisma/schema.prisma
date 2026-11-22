@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProjectKind {
+  ACADEMIC
+  PERSONAL
+  HACKATHON
+}
+
+enum ProjectStatus {
+  OPEN
+  CLOSED
+}
+
+enum RequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id           String        @id @default(uuid())
+  name         String
+  email        String        @unique
+  passwordHash String
+  college      String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  projects     Project[]
+  joinRequests JoinRequest[]
+}
+
+model Project {
+  id           String        @id @default(uuid())
+  title        String
+  description  String
+  skills       String[]
+  roles        String[]
+  kind         ProjectKind   @default(PERSONAL)
+  status       ProjectStatus @default(OPEN)
+  ownerId      String
+  owner        User          @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  joinRequests JoinRequest[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  @@index([ownerId])
+  @@index([status, createdAt])
+}
+
+model JoinRequest {
+  id        String        @id @default(uuid())
+  message   String?
+  status    RequestStatus @default(PENDING)
+  projectId String
+  project   Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@unique([projectId, userId])
+  @@index([userId])
+  @@index([projectId, status])
+}
